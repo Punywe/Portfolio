@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-project",
+  "version": "1.0.0",
+  "description": "Portfolio website built with React, Tailwind CSS v4, and TypeScript",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build",
+    "build:backend": "npm --prefix backend run build"
+  },
+  "keywords": ["portfolio", "react", "tailwindcss", "typescript"],
+  "author": "",
+  "license": "ISC"
+}

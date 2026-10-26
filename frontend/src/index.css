@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Mitr:wght@200;300;400;500;600;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+/* สำหรับ Tailwind v4: กำหนดฟอนต์หลักให้ธีม */
+@theme {
+  --font-sans: 'Share Tech Mono', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    /* ใช้ฟอนต์ Mitr เป็นค่าเริ่มต้น */
+    font-family: var(--font-sans);
+    color: #f3f4f6;
+    overflow-x: hidden;
+  }
+}
+
+/* ซ่อน scrollbar ทั่วทั้งหน้าเว็บ แต่ยังเลื่อน (scroll) ได้ตามปกติ */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge, Opera */
+}
