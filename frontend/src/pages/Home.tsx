@@ -1,56 +1,93 @@
 // src/pages/Home.tsx
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Introduce } from "./introduce";
 import { Skill } from "./Skill";
+import { SeniorProject } from "./SeniorProject";
 
 export const Home = () => {
-  const scrollContainerRef = useRef(null); 
-  const heroRef = useRef(null);          
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    container: scrollContainerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const scale1 = useTransform(scrollYProgress, [0, 0.3], [1, 2.5]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
-
-  const opacity2 = useTransform(scrollYProgress, [0.3, 0.45, 0.6], [0, 1, 0]);
-  const scale2 = useTransform(scrollYProgress, [0.3, 0.6], [0.8, 2]);
-
-  const opacity3 = useTransform(scrollYProgress, [0.65, 0.85], [0, 1]);
-  const scale3 = useTransform(scrollYProgress, [0.65, 1], [0.8, 1]);
+  // ควบคุมขั้นตอนของข้อความ: 0 = Hello everyone..., 1 = Welcome to, 2 = My Portfolio, 3 = เสร็จสิ้นเตรียมไปหน้าถัดไป
+  const [step, setStep] = useState(0);
 
   return (
-    /* เปลี่ยนพื้นหลังหลักจาก bg-[#0d0f12] เป็น bg-white และเปลี่ยนสีตัวหนังสือรวมเป็น text-black */
-    <div 
-      ref={scrollContainerRef} 
-      className="w-full h-screen bg-white text-black overflow-y-scroll snap-y snap-mandatory scroll-smooth"
-    >
+    <div className="w-full h-screen bg-white text-black overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       
-      {/* ส่วนที่ 1: Hero Animation 400vh */}
-      <div ref={heroRef} className="relative h-[400vh] w-full snap-start">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* ส่วนที่ 1: หน้า Hero เล่นแอนิเมชันอัตโนมัติ */}
+      <section className="h-screen w-full snap-start snap-always flex items-center justify-center relative overflow-hidden">
+        <AnimatePresence mode="wait">
           
-          {/* เอาวงกลมสีน้ำเงินฟุ้งๆ ออกเรียบร้อย */}
+          {/* ข้อความที่ 1: Hello everyone... */}
+          {step === 0 && (
+            <motion.div
+              key="step0"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.5 }}
+              transition={{ duration: 1 }}
+              onAnimationComplete={() => {
+                // เล่นข้อความนี้จบ พักแป๊บหนึ่งแล้วเปลี่ยนไปข้อความถัดไป
+                setTimeout(() => setStep(1), 800);
+              }}
+              className="absolute text-center"
+            >
+              <h1 className="text-5xl md:text-8xl font-medium tracking-tight text-gray-400">
+                Hello everyone...
+              </h1>
+            </motion.div>
+          )}
 
-          <motion.div style={{ scale: scale1, opacity: opacity1 }} className="absolute z-10 text-center">
-            <h1 className="text-5xl md:text-8xl font-medium tracking-tight text-black">Hello everyone...</h1>
+          {/* ข้อความที่ 2: Welcome to */}
+          {step === 1 && (
+            <motion.div
+              key="step1"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.5 }}
+              transition={{ duration: 1 }}
+              onAnimationComplete={() => {
+                setTimeout(() => setStep(2), 800);
+              }}
+              className="absolute text-center"
+            >
+              <h1 className="text-5xl md:text-8xl font-medium tracking-tight text-gray-400">
+                Welcome to
+              </h1>
+            </motion.div>
+          )}
+
+          {/* ข้อความที่ 3: My Portfolio */}
+          {step === 2 && (
+            <motion.div
+              key="step2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.2 }}
+              transition={{ duration: 1 }}
+              onAnimationComplete={() => {
+                // พอน้องข้อความสุดท้ายเล่นจบ ให้เปลี่ยนสเต็ปเพื่อซ่อน หรือสามารถเลื่อนลงหน้า Introduce อัตโนมัติได้
+                setTimeout(() => setStep(3), 1000);
+              }}
+              className="absolute text-center"
+            >
+              <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-black">
+                My Portfolio
+              </h1>
+            </motion.div>
+          )}
+
+        </AnimatePresence>
+
+        {/* ปุ่มข้าม หรือข้อความบอกสถานะเบื้องต้น (ถ้าต้องการ) */}
+        {step === 3 && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center"
+          >
+            <h1 className="text-3xl font-light text-gray-400">Let's get started ↓</h1>
           </motion.div>
-
-          <motion.div style={{ scale: scale2, opacity: opacity2 }} className="absolute z-10 text-center">
-            <h1 className="text-5xl md:text-8xl font-medium tracking-tight text-black">Welcome to</h1>
-          </motion.div>
-
-          <motion.div style={{ scale: scale3, opacity: opacity3 }} className="absolute z-10 text-center">
-            {/* เปลี่ยนเป็นสีฟ้าเข้ม (เช่น text-blue-600) เพื่อให้มองเห็นเด่นชัดบนพื้นหลังสีขาว */}
-            <h1 className="text-5xl md:text-8xl font-medium tracking-tight ">My Portfolio</h1>
-          </motion.div>
-
-        </div>
-      </div>
+        )}
+      </section>
 
       {/* ส่วนที่ 2: หน้า Introduce */}
       <section className="h-screen w-full snap-start snap-always flex items-center justify-center">
@@ -60,6 +97,11 @@ export const Home = () => {
       {/* ส่วนที่ 3: หน้า Skill */}
       <section className="h-screen w-full snap-start snap-always flex items-center justify-center">
         <Skill />
+      </section>
+
+      {/* ส่วนที่ 4: Senior Project */}
+      <section className="h-screen w-full snap-start snap-always flex items-center justify-center">
+        <SeniorProject />
       </section>
 
     </div>
