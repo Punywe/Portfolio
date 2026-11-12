@@ -31,7 +31,7 @@ export const Contact = () => {
         </div>
 
         {/* 3 Contact Cards Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-10'>
           
           {/* Card 1: Email */}
           <div className='group relative p-4 sm:p-5 rounded-2xl bg-[#14171c] border border-neutral-800 hover:border-neutral-600 transition-all duration-300 flex flex-col justify-between'>
@@ -111,41 +111,7 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Card 3: Address */}
-          <div className='group relative p-4 sm:p-5 rounded-2xl bg-[#14171c] border border-neutral-800 hover:border-neutral-600 transition-all duration-300 flex flex-col justify-between sm:col-span-2 md:col-span-1'>
-            <div className='flex items-start justify-between mb-3 sm:mb-4'>
-              <div className='w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-800/80 flex items-center justify-center text-neutral-200 border border-neutral-700/50 group-hover:border-neutral-500 transition-colors'>
-                <MapPin size={18} />
-              </div>
-              <button
-                type='button'
-                onClick={() => handleCopy('118 หมู่ 6 ต.ดอยเต่า อ.ดอยเต่า จ.เชียงใหม่ 50260', 'address')}
-                className='text-xs font-mono px-2 sm:px-2.5 py-1 rounded-md bg-neutral-800/60 hover:bg-neutral-700/80 text-neutral-400 hover:text-neutral-200 border border-neutral-700/50 transition flex items-center gap-1.5'
-                title='Copy Address'
-              >
-                {copiedField === 'address' ? (
-                  <>
-                    <Check size={12} className='text-emerald-400' />
-                    <span className='text-emerald-400'>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={12} />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
-            </div>
-            <div>
-              <span className='text-[10px] sm:text-xs font-mono text-neutral-500 uppercase tracking-wider block mb-1'>
-                Address
-              </span>
-              <p className='text-xs sm:text-sm text-neutral-300 leading-relaxed'>
-                118 หมู่ 6 ต.ดอยเต่า อ.ดอยเต่า<br />
-                จ.เชียงใหม่ 50260
-              </p>
-            </div>
-          </div>
+          
 
         </div>
 

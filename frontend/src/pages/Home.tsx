@@ -11,10 +11,10 @@ export const Home = () => {
   const [step, setStep] = useState(0);
 
   return (
-    <div className="w-full h-screen bg-white text-black overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+    <div className="w-full h-screen bg-white text-black overflow-y-scroll lg:snap-y lg:snap-mandatory scroll-smooth">
       
       {/* ส่วนที่ 1: หน้า Hero เล่นแอนิเมชันอัตโนมัติ */}
-      <section className="h-screen w-full snap-start snap-always flex items-center justify-center relative overflow-hidden">
+      <section className="h-screen w-full lg:snap-start lg:snap-always flex items-center justify-center relative overflow-hidden">
         <AnimatePresence mode="wait">
           
           {/* ข้อความที่ 1: Hello everyone... 
@@ -94,22 +94,22 @@ export const Home = () => {
       </section>
 
       {/* ส่วนที่ 2: หน้า Introduce */}
-      <section className="h-screen w-full snap-start snap-always flex items-center justify-center">
+      <section className="min-h-screen lg:h-screen w-full lg:snap-start lg:snap-always flex items-center justify-center">
         <Introduce />
       </section>
 
       {/* ส่วนที่ 3: หน้า Skill */}
-      <section className="h-screen w-full snap-start snap-always flex items-center justify-center bg-[#0d0f12]">
+      <section className="min-h-screen lg:h-screen w-full lg:snap-start lg:snap-always flex items-center justify-center bg-[#0d0f12]">
         <Skill />
       </section>
 
       {/* ส่วนที่ 4: Senior Project */}
-      <section className="min-h-screen lg:h-screen w-full snap-start lg:snap-always flex items-center justify-center bg-[#0d0f12]">
+      <section className="min-h-screen lg:h-screen w-full lg:snap-start lg:snap-always flex items-center justify-center bg-[#0d0f12]">
         <SeniorProject />
       </section>
 
       {/* ส่วนที่ 5: Contact */}
-      <section className="h-auto w-full snap-start lg:snap-always flex items-center justify-center bg-[#0d0f12]">
+      <section className="h-auto w-full lg:snap-start lg:snap-always flex items-center justify-center bg-[#0d0f12]">
         <Contact />
       </section>
 

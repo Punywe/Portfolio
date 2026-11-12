@@ -3,11 +3,11 @@ import { Globe, Cpu, Eye, Sparkles } from 'lucide-react';
 
 export const Skill = () => {
   return (
-    <section className='w-full h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-12 bg-[#0d0f12] text-white overflow-hidden'>
-      <div className='w-full max-w-7xl mx-auto flex flex-col justify-center h-full max-h-screen py-2 sm:py-4'>
+    <section className='w-full min-h-screen lg:h-screen flex flex-col items-center justify-start lg:justify-center pt-8 sm:pt-12 lg:pt-0 pb-10 lg:pb-0 p-4 sm:p-6 md:p-12 bg-[#0d0f12] text-white overflow-hidden'>
+      <div className='w-full max-w-7xl mx-auto flex flex-col justify-start lg:justify-center h-auto lg:h-full lg:max-h-screen py-2 sm:py-4'>
         
         {/* Section Header */}
-        <div className='mb-4 sm:mb-6 lg:mb-10 text-left md:text-center shrink-0'>
+        <div className='mb-20 sm:mb-6 lg:mb-10 text-left md:text-center shrink-0'>
           <h1 className='text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-neutral-100'>My Skills</h1>
           <p className='text-neutral-400 mt-1 sm:mt-2 text-xs sm:text-sm md:text-base'>
             Core technologies, hardware, and modern AI workflows I use to build robust software solutions.
@@ -136,9 +136,12 @@ export const Skill = () => {
         </div>
 
         {/* ข้อความบอกใบ้สำหรับการเลื่อนซ้าย-ขวาบนหน้าจอมือถือและแท็บเล็ต */}
-        <div className='flex lg:hidden items-center justify-between mt-2 px-1 text-[11px] text-neutral-500 font-mono shrink-0'>
-          <span>← Swipe to explore cards →</span>
-          <span className='text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 border border-neutral-700/50 text-neutral-400'>
+        <div className='flex lg:hidden items-center justify-between mt-3 px-1 text-[11px] text-neutral-500 font-mono shrink-0'>
+          <span className='flex items-center gap-1.5'>
+            <span className='inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse'></span>
+            Swipe horizontally to explore
+          </span>
+          <span className='text-[10px] px-2.5 py-0.5 rounded-full bg-neutral-800/90 border border-neutral-700/50 text-neutral-400 font-medium'>
             4 Cards
           </span>
         </div>
