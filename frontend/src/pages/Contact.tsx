@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
